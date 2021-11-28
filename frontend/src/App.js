@@ -25,6 +25,7 @@ class App extends Component {
 
 <Routes>
       <Route path="/" element={<ListAll />} />
+      <Route path="customers/allDetails" element={<ListAll />} />
      
       <Route path="customers/insert" element={<AddCustomer />} />
       <Route path="customers/update" element={<UpdateCustomer />} />

@@ -43,11 +43,11 @@ deleteCustomer(cid){
  <h4> Customer Records</h4>
  {this.state.customers.map(c=>{
      return(
-        <>
+       
          
-<div class="inCard">
-<Card sx={{ minWidth: 275,maxWidth:300}} style={{ borderColor: "blue" }}>
-<CardContent>
+<div key={c.cid} className="inCard" >
+<Card  sx={{ minWidth: 275,maxWidth:300}} style={{ borderColor: "blue" }} >
+<CardContent >
   <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
    <b>{c.cid}</b>
   </Typography>
@@ -77,7 +77,7 @@ deleteCustomer(cid){
 </Card>
 <br/>
 </div>
-</>
+
 
      )
  })}

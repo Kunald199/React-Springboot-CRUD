@@ -13,12 +13,15 @@ import EmailIcon from '@mui/icons-material/Email';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import WorkIcon from '@mui/icons-material/Work';
+import Alert from '@mui/material/Alert';
 
 class GetId extends Component{
 
     state={
         cid:-1,
-        customers:[]
+        customers:[],
+        error:null
+        
     }
     changeHandler=(e)  =>{
         this.setState({
@@ -29,30 +32,34 @@ class GetId extends Component{
         getRecord=(e)=>{
             e.preventDefault();
            CustomerService.getById(this.state.cid).then((res)=>{
-               
-               this.setState({customers:res.data});
+               if(res.data!=null){
+               this.setState({customers:res.data,error:false});
+               }
+               else{
+                   this.setState({error:true});
+               }
            });
         }
         render(){
          
             return(
                 <>
-                <div></div>
-                <div class="center">
+                
+                <div className="center">
      <h4> Get Customer by Id</h4>
 
      <form onSubmit={this.getRecord}>
 
      
-     <div class="input-field col s7">
+     <div className="input-field col s7">
                                 <b style={{ color: "#1769aa" }}>ID</b>
-                                <input style ={{width: '60%'}} required type="number" name="cid" onChange={this.changeHandler} placeholder="Enter ID"></input>
+                                <input style ={{width: '8%'}} required type="number" name="cid" onChange={this.changeHandler} placeholder="Enter ID"></input>
                                
                                 </div>
                         
                         <br/>
 
-                        <button class="btn waves-effect waves-light blue" type="submit" name="action">
+                        <button className="btn waves-effect waves-light blue" type="submit" name="action">
      Get Record
   </button>
 
@@ -62,8 +69,11 @@ class GetId extends Component{
 </div>                
 <br/> 
  {
+
+this.state.error?(<div className="container"><Alert className="forAlert" variant="outlined" severity="error"><b className="alertMsg">Enter Valid Id</b></Alert></div>):(
+
     <div className="toLeft">
-    <div class="container">
+    <div className="container">
     <Card sx={{ minHeight:150,minWidth: 275,maxWidth:275}} style={{ borderColor: "blue" }}>
     <CardContent>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -90,8 +100,10 @@ class GetId extends Component{
     </Card>
     <br/>
     </div></div>
+)}
+    
    
-             }
+            
              
                  
              </>
