@@ -8,7 +8,7 @@ const Navbar = () => {
            <div className="container">
                <b className="brand-logo">Customer Management Service</b>
                <ul className="right">
-                   <li><b><NavLink to="/">All Records</NavLink></b></li>
+                   <li><b><NavLink to="/customers/allDetails">All Records</NavLink></b></li>
                    <li><b><NavLink to="/customers/insert">Add</NavLink></b></li>
                    <li><b><NavLink to="/customers/update">Update</NavLink></b></li>
                    <li><b><NavLink to="/customers/get">Get Record</NavLink></b></li>
